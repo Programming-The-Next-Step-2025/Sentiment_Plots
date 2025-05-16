@@ -1,0 +1,15 @@
+Package: sentimentplots
+Type: Package
+Title: Sentiment analysis for chat history
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Yvonne",
+      email = "yvonne.jin@uva.nl",
+      role = c("aut", "cre")
+    )
+  )
+Description: A package that steamline sentiment analysis and create visualisations :).
+License: MIT License
+Encoding: UTF-8
+LazyData: true
