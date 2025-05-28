@@ -1,16 +1,15 @@
 Package: sentimentplots
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Sentiment analysis for chat history
 Version: 0.1.0
 Authors@R: c(
     person(
-      "Jane", "Doe",
-      email = "jane@example.com",
+      "Yvonne",
+      email = "yvonne.jin@uva.nl",
       role = c("aut", "cre")
     )
   )
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
-License: What license is it under?
+Description: A package that steamline sentiment analysis and create visualisations :).
+License: MIT License
 Encoding: UTF-8
 LazyData: true
