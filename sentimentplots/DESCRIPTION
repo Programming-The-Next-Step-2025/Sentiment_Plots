@@ -1,5 +1,5 @@
 Package: sentimentplots
-Type: Package
+Type: A Shiny App Package
 Title: Sentiment analysis for chat history
 Version: 0.1.0
 Authors@R: c(
@@ -13,3 +13,31 @@ Description: A package that steamline sentiment analysis and create visualisatio
 License: MIT License
 Encoding: UTF-8
 LazyData: true
+<<<<<<< Updated upstream
+=======
+Roxygen: list(markdown = TRUE)
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Imports:
+    shiny,
+    dplyr,
+    ggplot2,
+    lubridate,
+    tidyr,
+    stringr,
+    rwhatsapp,
+    wordcloud,
+    ggwordcloud,
+    tidytext,
+    RColorBrewer,
+    ggimage
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
