@@ -4,11 +4,13 @@
 run_app <- function() {
   appDir <- system.file("R", package = "sentimentplots")
   if (appDir == "") {
-    stop("Could not find example directory. Try re-installing `myShinyApp`.", call. = FALSE)
+    stop("Could not find example directory. Try re-installing `sentimentplots`.", call. = FALSE)
   }
 
   shiny::runApp(appDir, display.mode = "normal")
 }
+
+devtools::install_github("Programming-The-Next-Step-2025/Sentiment_Plots")
 
 # roxygen2::roxygenize()
 #
