@@ -6,43 +6,18 @@ params:
   p1: NA
   p2: NA
   p3: NA
-.
-.
+
 
 output:  html_document
 date: "2025-05-23"
 ---
 
+```{r}
+install.packages("usethis")
+library("usethis")
 
-
-**Analysis on `r params$file` for the `r params$duration`**
-<br/>
-[Click here to analyse other whatsapp chats ](https://reubenjoseph13.shinyapps.io/Whatsapp_Analyzer/)
-
-
-<center>
-```{r echo=FALSE,out.width="50%" }
-#plot(rnorm(params$n), rnorm(params$n))
-if(params$n==2)
-{
-params$t3
-#params$t4
-}
-if(params$n!=2)
-{
-library(knitr)
-#final<-rbind(params$t1,params$t2)
-t2<-params$t2 %>% mutate(n=NULL)
-kable(list(t2,params$t1))
-}
+usethis::use_vignette("report.rmd") 
 ```
 
-```{r echo=FALSE,out.width="50%" }
-#plot(rnorm(params$n), rnorm(params$n))
-if(params$n==2)
-{
-#params$t3
-params$t4
-}
-```
-#more plots are present but are not shown
+
+
