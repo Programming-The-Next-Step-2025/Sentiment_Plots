@@ -13,3 +13,7 @@ Description: A package that steamline sentiment analysis and create visualisatio
 License: MIT License
 Encoding: UTF-8
 LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
