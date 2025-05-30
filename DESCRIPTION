@@ -31,3 +31,4 @@ Imports:
     tidytext,
     RColorBrewer,
     ggimage
+RoxygenNote: 7.3.2

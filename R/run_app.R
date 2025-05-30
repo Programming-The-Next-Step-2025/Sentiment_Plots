@@ -9,3 +9,5 @@ launch_sentimentplot <- function() {
 
   shiny::runApp(appDir, display.mode = "normal")
 }
+
+
