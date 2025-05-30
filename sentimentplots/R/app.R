@@ -46,10 +46,8 @@ ui <- fluidPage(
                  img(src = "export.jpeg", width = "100%", alt = "Example Image")), #instructions
         tabPanel("Summary Table", tableOutput("summaryTable")),
         tabPanel("Daily Message Count Plot", plotOutput("dailyMessagePlot")),
-        #tabPanel("Message Count by Author", plotOutput("messageCountPlot")),
         tabPanel("Message Time Analysis", plotOutput("messageHourPlot"), plotOutput("messageDayPlot")),
         tabPanel("Top Emojis", plotOutput("topEmojisPlot")),
-        tabPanel("Word Cloud", plotOutput("wordCloudPlot"), width = "100%"),
         tabPanel("Sentimen Analysis", plotOutput("SentimentPlot"))
       )
     )
@@ -144,8 +142,6 @@ server <- function(input, output) {
       theme_minimal()
   })
 
-  #output$messageCountPlot <- renderPlot({ create_message_count_plot(chat_data()) })
-
   # emoji
   output$topEmojisPlot <- renderPlot({
     emoji_data <- rwhatsapp::emojis %>% mutate(hex_runes1 = gsub("\\s[[:alnum:]]+", "", hex_runes)) %>% mutate(emoji_url = paste0("https://abs.twimg.com/emoji/v2/72x72/", tolower(hex_runes1), ".png"))
@@ -183,33 +179,6 @@ server <- function(input, output) {
   })
 
 
-output$wordCloudPlot <- renderPlot({
-  wordcloud_data <- chat_data() %>%
-    mutate(
-      text = stringr::str_remove_all(text, "<a\\s+[^>]*>|</a>"),  # Remove <a> tags
-      text = stringr::str_remove_all(text, "\\s*<[^>]+>"),        # Remove other HTML tags
-      text = stringr::str_remove_all(text, "http\\S+|www\\S+")   # Remove URLs
-    ) %>%
-    unnest_tokens(output = "word", input = text) %>%  # Tokenize text into words
-    filter(!is.na(word)) %>%  # Remove NA words
-    filter(str_detect(word, "[a-z]+")) %>%  # Remove non-alphabetic words (e.g., numbers, punctuation)
-    filter(!word %in% c(get_stopwords("en"), "media", "omitted", "deleted", "message", "you", "this")) %>%  # Remove stop words and common irrelevant terms
-    count(author, word, sort = TRUE)  # Count word frequencies per author
-
-  wordcloud_data %>%
-    group_by(author) %>%
-    slice_max(n, n = 50, with_ties = FALSE) %>% # Select top 50 words per author
-    ggplot(aes(label = word, size = n, color = n)) +
-    ggwordcloud::geom_text_wordcloud() +
-    scale_size_area(max_size = 10) +
-    scale_color_gradient(low = "grey", high = brewer.pal(8, "Dark2")[1]) +
-    facet_wrap(~author, ncol = 3, scales = "free") +
-    labs(title = "Word Clouds by Author") +
-    theme_minimal()
-
-})
-
-
 output$SentimentPlot <- renderPlot({
   weekly_sentiment_data <- chat_data() %>%
     mutate(day = date(time)) %>%
@@ -237,7 +206,6 @@ output$SentimentPlot <- renderPlot({
     theme_minimal() +
     scale_color_manual(values = c("purple", "brown"))
 })
-
 
 
 }

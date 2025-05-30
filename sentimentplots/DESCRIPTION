@@ -13,8 +13,6 @@ Description: A package that steamline sentiment analysis and create visualisatio
 License: MIT License
 Encoding: UTF-8
 LazyData: true
-<<<<<<< Updated upstream
-=======
 Roxygen: list(markdown = TRUE)
 Suggests: 
     knitr,
@@ -33,11 +31,3 @@ Imports:
     tidytext,
     RColorBrewer,
     ggimage
-
-
-
-
-
-
-
->>>>>>> Stashed changes
